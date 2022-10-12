@@ -1,0 +1,201 @@
+@use "./resets";
+@use "./variables" as *;
+@use "./sidebar";
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
+body {
+  font-family: Montserrat, Roboto, monospace;
+  background-color: $dark-bg;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+}
+header {
+  position: fixed;
+  width: 100vw;
+  z-index: 50;
+  background-color: $dark-bg;
+  // box-shadow: 0 0 10px;
+
+  h1 {
+    color: $white-shade-200;
+    cursor: default;
+    span {
+      color: $mint-green;
+    }
+
+    @include mobile {
+      span {
+        display: none;
+      }
+    }
+  }
+}
+.nav-btn {
+  width: 35px;
+  height: 30px;
+  position: relative;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+  background-color: transparent;
+  outline: none;
+  z-index: 10;
+
+  span {
+    display: block;
+    background-color: $white-shade-200;
+    width: 100%;
+    height: 5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    transform: rotate(0deg);
+    transition: 0.25s ease-in-out;
+
+    &:nth-child(1) {
+      top: 0;
+    }
+    &:nth-child(2) {
+      top: 12.5px;
+    }
+    &:nth-child(3) {
+      top: 25px;
+      width: 20px;
+    }
+  }
+}
+@include desktop {
+  .nav-btn {
+    display: none;
+  }
+}
+.nav-btn.slide span:nth-child(1) {
+  top: 18px;
+  transform: rotate(135deg);
+}
+.nav-btn.slide span:nth-child(2) {
+  opacity: 0;
+  left: -35px;
+}
+.nav-btn.slide span:nth-child(3) {
+  width: 35px;
+  top: 18px;
+  transform: rotate(-135deg);
+}
+.name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  @include desktop {
+    padding: 0;
+  }
+}
+@include desktop {
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 4rem;
+    // background-color: $white-shade-400;
+  }
+}
+
+// HOME STYLE
+.home {
+  display: grid;
+  place-content: center;
+  gap: 2rem;
+  min-height: 100vh;
+  padding: 0 2rem;
+  line-height: 1.5;
+
+  .small-text {
+    color: $mint-green;
+    font-size: 1.5rem;
+    font-weight: 600;
+
+    span {
+      font-size: 30px;
+    }
+  }
+  .main-text {
+    font-size: 2rem;
+    font-weight: 600;
+    color: $white;
+
+    span {
+      color: $mint-green;
+      font-weight: 700;
+    }
+  }
+  .medium-text {
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: $white;
+  }
+  .text-normal {
+    color: $white-shade-400;
+    font-size: 1.1rem;
+  }
+}
+// End of Home styles
+
+// About me
+.about-me {
+  min-height: 100vh;
+  padding: 0 2rem;
+  color: $white-shade-200;
+  h2 {
+    background-color: gray;
+    padding: 1rem 2rem;
+    position: relative;
+    box-shadow: 10px -20px $mint-green;
+  }
+  article {
+    margin-top: 2rem;
+    line-height: 1.5;
+
+    p {
+      padding-top: 1rem;
+    }
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 1.5rem;
+      & svg {
+        font-size: 2rem;
+        transition: 200ms ease-in;
+
+        &:hover {
+          color: $light-blue;
+        }
+      }
+    }
+  }
+}
+.img-container {
+  position: relative;
+  border: 2px solid $light-blue;
+  max-width: 350px;
+  height: 250px;
+  margin-top: 2rem;
+  border-radius: 5px;
+
+  img {
+    width: 200px;
+    // aspect-ratio: 1/1;
+    object-fit: cover;
+    max-width: 350px;
+    position: relative;
+    border-radius: 5px;
+    top: 20px;
+    right: -20px;
+  }
+}

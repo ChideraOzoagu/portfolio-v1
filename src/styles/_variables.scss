@@ -1,0 +1,23 @@
+$black: #181818;
+$light-blue: #456b91;
+$mint-green:  #70ff8d;
+$dark-blue: #34495e;
+$white: #fff;
+$white-shade-200: #dadfe1;
+$white-shade-400: #bdc3c7;
+$dark-bg: #171c28;
+
+
+$mobile-width: 767px;
+
+@mixin  mobile {
+    @media (max-width: $mobile-width) {
+        @content
+    }
+};
+
+@mixin desktop {
+    @media (min-width: #{$mobile-width + 1}) {
+        @content
+    }
+}
