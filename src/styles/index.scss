@@ -10,18 +10,16 @@ body {
   font-family: Montserrat, Roboto, monospace;
   background-color: $dark-bg;
   min-height: 100vh;
-  scroll-behavior: smooth;
 }
 header {
   position: fixed;
   width: 100vw;
   z-index: 50;
   background-color: $dark-bg;
-  // box-shadow: 0 0 10px;
 
   h1 {
     color: $white-shade-200;
-    cursor: default;
+    cursor: pointer;
     span {
       color: $mint-green;
     }
@@ -31,6 +29,26 @@ header {
         display: none;
       }
     }
+  }
+}
+.nav-desktop {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  a {
+    color: $white;
+    text-transform: capitalize;
+    font-weight: 600;
+  }
+  button {
+    background-color: transparent;
+    border: 1px solid $mint-green;
+    font-size: 1rem;
+    text-transform: uppercase;
+    padding: 0.6rem 1.5rem;
+    border-radius: 5px;
+    color: $mint-green;
+    cursor: pointer;
   }
 }
 .nav-btn {
@@ -99,23 +117,48 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 4rem;
-    // background-color: $white-shade-400;
+    gap: 1rem;
+    padding: 1rem 3.5rem;
+  }
+}
+@include mobile {
+  .nav-desktop {
+    display: none;
   }
 }
 
 // HOME STYLE
 .home {
-  display: grid;
-  place-content: center;
-  gap: 2rem;
-  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // flex-direction: column;
   padding: 0 2rem;
   line-height: 1.5;
+  gap: 3rem;
+  min-height: 100vh;
+  max-width: 100rem;
 
+  div {
+    display: grid;
+    place-content: center;
+    gap: 2rem;
+    max-width: 600px;
+  }
+  .laptop {
+    max-width: 40vw;
+    border-radius: 5px;
+    box-shadow: 10px 20px $mint-green;
+  }
+  @include mobile {
+    .laptop {
+      display: none;
+    }
+  }
   .small-text {
     color: $mint-green;
-    font-size: 1.5rem;
+    font-size: clamp(1.5rem, 50vw, 2rem);
+    // font-size: 1.5rem;
     font-weight: 600;
 
     span {
@@ -130,6 +173,7 @@ header {
     span {
       color: $mint-green;
       font-weight: 700;
+      font-size: clamp(1.5rem, 40vw, 3rem);
     }
   }
   .medium-text {
@@ -137,16 +181,25 @@ header {
     font-weight: 600;
     color: $white;
   }
+  @include desktop {
+    .medium-text {
+      font-size: 2rem;
+    }
+  }
   .text-normal {
     color: $white-shade-400;
     font-size: 1.1rem;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .home {
+    flex-direction: row;
   }
 }
 // End of Home styles
 
 // About me
 .about-me {
-  min-height: 100vh;
   padding: 0 2rem;
   color: $white-shade-200;
   h2 {
@@ -168,7 +221,7 @@ header {
       justify-content: center;
       flex-wrap: wrap;
       gap: 2rem;
-      margin-top: 1.5rem;
+      margin: 1.5rem 0 2rem;
       & svg {
         font-size: 2rem;
         transition: 200ms ease-in;
@@ -180,22 +233,137 @@ header {
     }
   }
 }
-.img-container {
+.avatar {
+  width: 100%;
+  margin-bottom: 2rem;
   position: relative;
-  border: 2px solid $light-blue;
-  max-width: 350px;
-  height: 250px;
-  margin-top: 2rem;
+  box-shadow: 10px -20px $mint-green;
   border-radius: 5px;
+  transition: all 0.2s ease-in;
 
-  img {
-    width: 200px;
-    // aspect-ratio: 1/1;
-    object-fit: cover;
-    max-width: 350px;
+  &:hover {
+    box-shadow: 0px 0px;
+    transform: scale(1.05);
+  }
+}
+@include desktop {
+  .about-me {
+    
+    article {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 3rem;
+
+      ul {
+        justify-content: start;
+      }
+    }
+  }
+}
+@media (min-width: 1000px){
+  .about-me{
+    // min-height: 90vh;
+    padding: 0 10rem;
+
+    article {
+      flex-direction: row;
+    }
+  }
+  .avatar {
+    width: 40%;
+    max-width: 400px;
+    margin-top: 5rem;
+  }
+}
+
+
+// Projects 
+.projects {
+  padding: 0 2rem;
+  transition: all 0.2s ease-in ;
+  h2 {
+    background-color: gray;
+    padding: 1rem 2rem;
     position: relative;
-    border-radius: 5px;
-    top: 20px;
-    right: -20px;
+    box-shadow: 10px -20px $mint-green;
+    margin: 2rem 0;
+    color: $white-shade-200;
+  }
+  .grid {
+    display: grid;
+    place-items: center;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    // margin: 0 2rem;
+    // grid-template-columns: 1fr 1fr;
+  }
+}
+.project-list {
+  background-color: $white;
+  border-radius: 5px;
+  width: 300px;
+  width: 100%;
+  // height: 300px;
+
+  .project-content {
+    padding: 10px;
+  }
+
+  h4 {
+    font-size: 1.2rem;
+    color: $black;
+  }
+  img {
+    width: 100%;
+    height: 200px;
+    border-top-left-radius: 5px ;
+    border-top-right-radius: 5px ;
+    object-fit: cover;
+    box-shadow: 0 0 5px rgba(0 0 0.1);
+  }
+  .tags {
+    margin: 0.8rem 0;
+    display: block;
+  }
+  .tag {
+    background: $white-shade-400;
+    padding: 0.15rem 0.35rem;
+    color: $black;
+    border-radius: 3px;
+    margin-right: 0.5rem;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    cursor: default;
+  }
+  .links{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+  }
+  a {
+    svg {
+      margin-top: 8px;
+      margin-right: 1rem;
+      color: $dark-blue;
+      font-size: 1.5rem;
+    }
+  }
+}
+@include desktop {
+  .projects {
+    // padding: 0 10rem;
+    h2 {
+      // margin-inline: 10rem;
+    }
+    .grid{
+      // grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+}
+@media (min-width: 875px){
+  .projects {
+    padding: 0 10rem;
   }
 }

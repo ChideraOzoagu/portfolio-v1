@@ -1,27 +1,21 @@
-import React from 'react'
-import { FaQuestion } from "react-icons/fa";
-import { MdWork } from "react-icons/md";
-import { BsFillTelephoneFill } from "react-icons/bs";
+import React, { useRef } from 'react'
 
-
-const Sidebar = ({navbar}) => {
+const Sidebar = ({navbar, navLinks, handleScroll}) => {
+  
   return (
     <nav className={`${navbar? 'show-navbar':''}`}>
         <div className={`nav-container`}>
-          <ul>
-            <li>
-              <BsFillTelephoneFill />
-              <a href="">contact</a>
-            </li>
-            <li>
-              <FaQuestion />
-              <a href="">about me</a>
-            </li>
-            <li>
-              <MdWork />
-              <a href="">projects</a>
-            </li>
-          </ul>
+          {
+            navLinks.map((nav, index)=>{
+              const {icon, text, link} = nav 
+              return <ul key={index}>
+                 <li>
+                  {icon}
+                  <a href={link} onClick={handleScroll}>{text}</a>
+                 </li>
+              </ul>
+            })
+          }
           <button>
             Resume
           </button>
