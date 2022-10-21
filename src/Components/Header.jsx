@@ -3,6 +3,7 @@ import Sidebar from "./Sidebar";
 import { FaQuestion } from "react-icons/fa";
 import { MdWork } from "react-icons/md";
 import { BsFillTelephoneFill } from "react-icons/bs";
+import { motion } from "framer-motion"
 
 const navLinks = [
   {
@@ -41,7 +42,10 @@ const Header = () => {
     setNavbar(false)
   }
   return (
-    <header ref={nav}>
+    <motion.header ref={nav}
+     initial= {{opacity: 0, y: -50}}
+     animate= {{opacity: 1, y: 0}}
+     >
       <div className="name">
         <a href="#home">
           <h1>
@@ -55,16 +59,21 @@ const Header = () => {
         </button>
       </div>
         <Sidebar navbar={navbar} navLinks={navLinks} setNavbar={setNavbar} handleScroll={handleScroll}/>
-      <div className="nav-desktop">
+      <motion.div className="nav-desktop"
+      initial= {{opacity: 0, y: -50}}
+     animate= {{opacity: 1, y: 0}}
+      // transition = {{delay: 1.2}}
+      >
         {navLinks.map((nav, index)=>{
           const {text, link} = nav
-          return <a href={link} key={index} onClick={handleScroll}>{text}</a>
+          return <a className="nav-links" href={link} key={index} onClick={handleScroll}
+          >{text}</a>
         })}
-        <button>
-          resume
-        </button>
-      </div>
-    </header>
+        <a
+        
+        href="src\assets\Chidera Resume.pdf" className="resume-btn" download>Resume</a>
+      </motion.div>
+    </motion.header>
   );
 };
 

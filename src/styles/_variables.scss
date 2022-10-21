@@ -1,13 +1,15 @@
 $black: #181818;
 $light-blue: #456b91;
+// $mint-green:  red;
 $mint-green:  #70ff8d;
 $dark-blue: #34495e;
 $white: #fff;
 $white-shade-200: #dadfe1;
 $white-shade-400: #bdc3c7;
 $dark-bg: #171c28;
+$footer-bg: #000b19;
 
-
+$transition-primary: all 0.2s linear; 
 $mobile-width: 767px;
 
 @mixin  mobile {

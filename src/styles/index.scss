@@ -11,11 +11,18 @@ body {
   background-color: $dark-bg;
   min-height: 100vh;
 }
+.app {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
 header {
   position: fixed;
   width: 100vw;
   z-index: 50;
   background-color: $dark-bg;
+  transition: all 0.2s ease-in  ;
+  transition: $transition-primary;
 
   h1 {
     color: $white-shade-200;
@@ -35,20 +42,45 @@ header {
   display: flex;
   align-items: center;
   gap: 3rem;
-  a {
+  .nav-links {
     color: $white;
     text-transform: capitalize;
     font-weight: 600;
+    position: relative;
+    // transition: all 0.2s ease-in;
+
+    &::after {
+      content: "";
+      width: 0;
+      height: 3px;
+      background-color: $mint-green;
+      position: absolute;
+      bottom: -15px;
+      left: 0;
+      transition: width 0.3s ease;
+      opacity: 0.6;
+    }
+
+    &:hover::after {
+      opacity: 1;
+      width: 100%;
+    }
   }
-  button {
-    background-color: transparent;
-    border: 1px solid $mint-green;
+  .resume-btn {
+    background-color: $mint-green;
+    color: $white;
     font-size: 1rem;
     text-transform: uppercase;
     padding: 0.6rem 1.5rem;
     border-radius: 5px;
-    color: $mint-green;
+    border: 1px solid $mint-green;
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background-color: transparent;
+      color: $mint-green;
+    }
   }
 }
 .nav-btn {
@@ -132,12 +164,12 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  // flex-direction: column;
   padding: 0 2rem;
   line-height: 1.5;
   gap: 3rem;
   min-height: 100vh;
   max-width: 100rem;
+  transition: $transition-primary;
 
   div {
     display: grid;
@@ -158,7 +190,6 @@ header {
   .small-text {
     color: $mint-green;
     font-size: clamp(1.5rem, 50vw, 2rem);
-    // font-size: 1.5rem;
     font-weight: 600;
 
     span {
@@ -248,7 +279,6 @@ header {
 }
 @include desktop {
   .about-me {
-    
     article {
       display: flex;
       align-items: center;
@@ -262,9 +292,8 @@ header {
     }
   }
 }
-@media (min-width: 1000px){
-  .about-me{
-    // min-height: 90vh;
+@media (min-width: 1000px) {
+  .about-me {
     padding: 0 10rem;
 
     article {
@@ -278,11 +307,10 @@ header {
   }
 }
 
-
-// Projects 
+// Projects
 .projects {
   padding: 0 2rem;
-  transition: all 0.2s ease-in ;
+  transition: all 0.2s ease-in;
   h2 {
     background-color: gray;
     padding: 1rem 2rem;
@@ -296,8 +324,6 @@ header {
     place-items: center;
     gap: 2rem;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    // margin: 0 2rem;
-    // grid-template-columns: 1fr 1fr;
   }
 }
 .project-list {
@@ -305,7 +331,11 @@ header {
   border-radius: 5px;
   width: 300px;
   width: 100%;
-  // height: 300px;
+  transition: transform 400ms ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 
   .project-content {
     padding: 10px;
@@ -318,8 +348,8 @@ header {
   img {
     width: 100%;
     height: 200px;
-    border-top-left-radius: 5px ;
-    border-top-right-radius: 5px ;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
     object-fit: cover;
     box-shadow: 0 0 5px rgba(0 0 0.1);
   }
@@ -337,7 +367,7 @@ header {
     letter-spacing: 1px;
     cursor: default;
   }
-  .links{
+  .links {
     display: flex;
     align-items: center;
     justify-content: right;
@@ -351,19 +381,60 @@ header {
     }
   }
 }
-@include desktop {
-  .projects {
-    // padding: 0 10rem;
-    h2 {
-      // margin-inline: 10rem;
-    }
-    .grid{
-      // grid-template-columns: 1fr 1fr 1fr;
-    }
-  }
-}
-@media (min-width: 875px){
+
+@media (min-width: 875px) {
   .projects {
     padding: 0 10rem;
+  }
+}
+
+// contact
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4rem;
+  padding: 2rem 1rem;
+  gap: 1.5rem;
+  background-color: $footer-bg;
+
+  h2 {
+    color: $white-shade-200;
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .email {
+    border: 1px solid $mint-green;
+    padding: 1rem;
+    text-transform: capitalize;
+    border-radius: 4px;
+    background-color: $mint-green;
+    color: $black;
+    font-weight: 700;
+    transition: all 0.2s ease-in;
+
+    &:hover {
+      border: 1px solid $mint-green;
+      color: $white-shade-200;
+      background-color: transparent;
+    }
+  }
+  .socials {
+    margin-top: 1rem;
+
+    svg {
+      font-size: 1.5rem;
+      margin: 0 12px;
+      color: $light-blue;
+      color: $white;
+      transition: 0.5s all ease-in-out;
+
+      &:hover {
+        transform: translateY(-10px);
+        color: $light-blue;
+      }
+    }
   }
 }

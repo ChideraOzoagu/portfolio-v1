@@ -2,14 +2,40 @@ import React from "react";
 import { FaGithub } from "react-icons/fa";
 import { BsFolderSymlinkFill } from "react-icons/bs";
 import { projects } from "./data";
+import {motion} from 'framer-motion'
 const Projects = () => {
+  const projectList = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.4,
+      },
+    },
+  };
+  const item = {
+    hidden: { opacity: 0, y: 30 },
+    show: { opacity: 1, y: 0,
+    
+    }
+  }
   return (
     <section className="projects" id='projects'>
       <h2>Completed Projects</h2>
-      <article className="grid">
+      <motion.article 
+      variants={projectList}
+      initial='hidden'
+      whileInView='show'
+      viewport={{once: true, amount: 0.1}}
+
+      className="grid">
         {projects.map((project)=>{
           const {id, img, title, technologies, github, liveSite} = project
-          return <div className="project-list" key={id}>
+          return <motion.div className="project-list" key={id}
+          variants={item}
+          // viewport={{once: true, amount: 0.5}}
+
+          >
             <img src={img} alt={title} />
             <div className="project-content">
               <h4>{title}</h4>
@@ -29,9 +55,9 @@ const Projects = () => {
                   </a>
                 </div>
             </div>
-          </div>
+          </motion.div>
         })}
-      </article>
+      </motion.article>
     </section>
   );
 };
