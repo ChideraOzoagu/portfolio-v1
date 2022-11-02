@@ -14,8 +14,8 @@ const Projects = () => {
     },
   };
   const item = {
-    hidden: { opacity: 0, y: 30 },
-    show: { opacity: 1, y: 0,
+    hidden: { opacity: 0, scale: 0 },
+    show: { opacity: 1, scale: 1
     
     }
   }
@@ -26,14 +26,14 @@ const Projects = () => {
       variants={projectList}
       initial='hidden'
       whileInView='show'
-      viewport={{once: true, amount: 0.1}}
+      // viewport={{once: true, amount: 0.1}}
 
       className="grid">
         {projects.map((project)=>{
           const {id, img, title, technologies, github, liveSite} = project
           return <motion.div className="project-list" key={id}
           variants={item}
-          // viewport={{once: true, amount: 0.5}}
+          viewport={{once: true, amount: 0.5}}
 
           >
             <img src={img} alt={title} />
