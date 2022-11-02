@@ -26,7 +26,7 @@ const Projects = () => {
       variants={projectList}
       initial='hidden'
       whileInView='show'
-      // viewport={{once: true, amount: 0.1}}
+      viewport={{once: true, amount: 0.1}}
 
       className="grid">
         {projects.map((project)=>{
