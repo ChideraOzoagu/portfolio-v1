@@ -6,7 +6,6 @@ import manutdImg from '../assets/manutd.png'
 
 export const projects = [
     {
-        id:1,
         img: todoImg,
         title: 'Todo App',
         technologies: [
@@ -16,7 +15,6 @@ export const projects = [
         liveSite: 'https://live-todo-app.netlify.app',
     },
     {
-        id:2,
         img: eCommerceImg,
         title: 'E-commerce product',
         technologies: [
@@ -26,7 +24,6 @@ export const projects = [
         liveSite: 'https://chidera-product-page.netlify.app',
     },
     {
-        id:3,
         img: easybankImg,
         title: 'Easybank homepage',
         technologies: [
@@ -36,7 +33,6 @@ export const projects = [
         liveSite: 'https://easybank-live.netlify.app',
     },
     {
-        id:4,
         img: crowfundingImg,
         title: 'Crowdfunding page',
         technologies: [
@@ -46,7 +42,6 @@ export const projects = [
         liveSite: 'https://crowdfundingpage-fem.netlify.app',
     },
     {
-        id:5,
         img: manutdImg,
         title: 'ManUtd trophy counter',
         technologies: [

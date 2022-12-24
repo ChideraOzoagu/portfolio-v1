@@ -29,9 +29,9 @@ const Projects = () => {
       viewport={{once: true, amount: 0.1}}
 
       className="grid">
-        {projects.map((project)=>{
-          const {id, img, title, technologies, github, liveSite} = project
-          return <motion.div className="project-list" key={id}
+        {projects.map((project, index)=>{
+          const {img, title, technologies, github, liveSite} = project
+          return <motion.div className="project-list" key={index}
           variants={item}
           viewport={{once: true, amount: 0.5}}
 
